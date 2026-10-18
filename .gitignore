@@ -1,0 +1,22 @@
+.idea/
+*.iml
+target/
+out/
+.classpath
+.project
+.settings/
+.env
+
+# IDE files
+.idea/
+**/.idea/
+*.iml
+
+# Maven build output
+target/
+**/target/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
