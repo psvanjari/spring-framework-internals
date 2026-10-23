@@ -35,6 +35,7 @@ public class Requests {
     public static class ProfileRequest {
         private String phone;
         private String address;
+        private Long studentId;
     }
 
     @Data

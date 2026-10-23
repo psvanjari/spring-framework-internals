@@ -166,11 +166,19 @@ public class CollegeService {
     }
 
     public ProfileResponse createProfile(ProfileRequest request) {
-        StudentProfile profile =
-                modelMapper.map(request, StudentProfile.class);
 
-        StudentProfile savedProfile =
-                profileRepository.save(profile);
+        Student student = studentRepository.findById(request.getStudentId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Student not found with ID: " + request.getStudentId()
+                ));
+
+
+        StudentProfile profile = new StudentProfile();
+        profile.setPhone(request.getPhone());
+        profile.setAddress(request.getAddress());
+        profile.setStudent(student);
+
+        StudentProfile savedProfile = profileRepository.save(profile);
 
         return modelMapper.map(savedProfile, ProfileResponse.class);
     }
